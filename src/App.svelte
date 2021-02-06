@@ -1,15 +1,29 @@
 <script>
 
 	import LoadVid from './LoadVideo/LoadVid.svelte';
-	let step 
+	import VideoCanvas from './VideoCanvas/VideoCanvas.svelte';
+	let step = 1;
+	let videoInfo = {
+		src: '',
+		type: ''
+	};
 	function handleMessage(event) {
-		alert(event.detail.src);
+		videoInfo.src = event.detail.src;
+		videoInfo.type = event.detail.type;
+		step = 2;
 	}
 </script>
 
 <main class="flex h-screen">
 	<div class="m-auto">
-		<LoadVid on:message={handleMessage}/>
+		{#if step == 1}
+			<LoadVid on:message={handleMessage}/>
+		{:else if step == 2}
+			<VideoCanvas {...videoInfo}/>
+		{:else}
+			<p>Nothing</p>
+		{/if}
+		
 	</div>
 </main>
 
