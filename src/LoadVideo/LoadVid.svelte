@@ -15,6 +15,11 @@
         
 	}
 </script>
+<div class= "min-h-screen flex items-center justify-center">
+    <div class= "max-w-md">
+        <input id="clip" class="bg-gray-100" on:change={videoLoad} type="file" accept="video/*"/>
+    </div>
+    
+</div>
 
-<input id="clip" class="bg-gray-100" on:change={videoLoad} type="file" accept="video/*"/>
 

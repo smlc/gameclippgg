@@ -14,8 +14,8 @@
 	}
 </script>
 
-<main class="flex h-screen">
-	<div class="m-auto">
+<main>
+	<div >
 		{#if step == 1}
 			<LoadVid on:message={handleMessage}/>
 		{:else if step == 2}
@@ -35,5 +35,5 @@
   /* purgecss end ignore */
  
   @tailwind utilities;
-	
+
 </style>

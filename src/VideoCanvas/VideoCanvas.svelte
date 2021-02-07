@@ -51,7 +51,22 @@
 
 </script>
 
-<video id="video" controls width="480" height="270" >
+<video class="hidden" id="video" controls width="480" height="270" >
     <track default kind="captions"/>
 </video>
-<canvas id="canvas" width="480" height="270"></canvas>
+
+<div class="min-h-screen m-0 grid grid-rows-3 grid-flow-col gap-4">
+
+    <div class="row-span-3 bg-red-400">
+        2
+    </div>
+        <div class="row-span-2 col-span-2  bg-blue-500 m-auto">
+            <canvas id="canvas" width="480" height="270"></canvas>
+        </div>
+        <div class="col-span-2 bg-green-400"> 
+            333
+        </div>
+</div>
+
+
+
