@@ -60,17 +60,21 @@
     <div class="row-span-3 bg-red-400">
         2
     </div>
-        <div class="row-span-2 col-span-2  bg-blue-500 m-auto">
-            <canvas id="canvas" width="480" height="270"></canvas>
-        </div>
-        <div class="col-span-2 bg-green-400"> 
-            <div class="flex">
+    <div class="row-span-2 col-span-2  bg-blue-500 m-auto">
+        <canvas id="canvas" width="480" height="270"></canvas>
+    </div>
+    <div class="col-span-2 bg-green-400"> 
+        <div class="flex w-full">
                 <button class="inline-flex items-center">
                     <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </button>
-                
-            </div>
+                <div id="video-progress" class="">
+                    <progress id="progress-bar" value="0" min="0"></progress>
+                    <input class="seek cursor-pointer w-full border-opacity-0" id="seek" value="0" min="0" type="range" step="1">
+                    <div class="seek-tooltip" id="seek-tooltip">00:00</div>
+                  </div>
         </div>
+    </div>
 </div>
 
 
