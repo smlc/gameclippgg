@@ -9,6 +9,7 @@
         videoNode = document.getElementById('video')
         let canPlay = videoNode.canPlayType(type)
         
+
         if (!canPlay) {
             return
         }
@@ -23,6 +24,8 @@
         videoNode.onloadedmetadata = () => {
             //Set the current time in order to triger the seeked event.
             videoNode.currentTime = 0;
+            let progressBar = document.getElementById('progress-bar')
+            progressBar.setAttribute('max', Math.round(videoNode.duration));
         }
 
         videoNode.addEventListener('seeked', function() {
@@ -39,6 +42,7 @@
         videoNode.addEventListener('canplaythrough', function() {
             setTimeout(videoLoop, 1000 / 30);
         })
+        video.addEventListener('timeupdate', updateProgressBar);
         
 	});
 
@@ -62,8 +66,10 @@
     }
 
     const updateProgressBar = (event) => {
-        let pos = (e.pageX  - (this.offsetLeft + this.offsetParent.offsetLeft)) / this.offsetWidth;
-        video.currentTime = pos * video.duration;
+       //let pos = (e.pageX  - (this.offsetLeft + this.offsetParent.offsetLeft)) / this.offsetWidth;
+       // video.currentTime = pos * video.duration;
+       let progressBar = document.getElementById('progress-bar');
+       progressBar.value = Math.floor(videoNode.currentTime);
     }
 </script>
 
@@ -81,14 +87,14 @@
     </div>
     <div class="col-span-2 w-full bg-green-400"> 
         <div id="video-controller w-full" class="flex">
-            <button on:click={playVideo} class="inline-flex items-center border-0">
+            <button on:click={playVideo} on:click={updateProgressBar} class="inline-flex items-center border-0">
                 <svg class="playback-icons w-10 h-10" fill="none" stroke="currentColor" >
                     <use id="playIconSvg" href="#play-icon"></use>
                     <use id="pauseIconSvg" class="hidden" href="#pause-icon"></use>
                   </svg>
             </button>
             <div class="video-progress w-full relative mt-2">
-                <progress on:click={updateProgressBar} class="absolute appearance-none pointer-events-none w-10/12 bg-gray-500 top-0 h-4 border-0 rounded " id="progress-bar" value="0" min="0"></progress>
+                <progress class="absolute appearance-none pointer-events-none w-10/12 bg-gray-500 top-0 h-4 border-0 rounded " id="progress-bar" value="0" min="0"></progress>
             </div>
         </div>
     </div>
